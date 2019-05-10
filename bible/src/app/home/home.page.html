@@ -14,8 +14,8 @@
   <ion-list>
     <ion-list-header>Interface Options</ion-list-header>
     <ion-item>
-      <ion-label> Old Testament</ion-label>
-      <ion-toggle checked={{derp}} color="primary"></ion-toggle>
+      <ion-label> {{testamentVersion}} Testament</ion-label>
+      <ion-toggle checked={{testamentTrigger}} color="primary" (ionChange)="derp($event)"></ion-toggle>
     </ion-item>
     <ion-item>
       <ion-label>Book</ion-label>
