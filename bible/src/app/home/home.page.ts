@@ -12,13 +12,17 @@ export class HomePage {
     private _testamentTrigger = true;
     private _subject: Subject<any>;
     testamentVersion = 'New';
+    bibleBooks = this.bibleService.getNewTestamentBooks();
+    numberOfChapters = this.bibleService.getChapterNumbers();
 
     constructor(private bibleService: BibleService) {
         this._subject = new Subject<any>();
         this._subject.subscribe(value => {
                 if (value) {
+                    this.bibleBooks = this.bibleService.getNewTestamentBooks();
                     this.testamentVersion = 'New';
                 } else {
+                    this.bibleBooks = this.bibleService.getOldTestamentBooks();
                     this.testamentVersion = 'Old';
                 }
             }
@@ -29,8 +33,9 @@ export class HomePage {
         return this._testamentTrigger;
     }
 
-    getBooks() {
-        return this.bibleService.getOldTestamentBooks();
+
+    bookChange(bookEvent: any) {
+        console.log(bookEvent);
     }
 
     testamentChange(toggleEvent: any) {
