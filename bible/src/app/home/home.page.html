@@ -1,47 +1,47 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      Home
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Home
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <ion-list>
-    <ion-list-header>Interface Options</ion-list-header>
-    <ion-item>
-      <ion-label> {{testamentVersion}} Testament</ion-label>
-      <ion-toggle checked={{testamentTrigger}} color="primary" (ionChange)="derp($event)"></ion-toggle>
-    </ion-item>
-    <ion-item>
-      <ion-label>Book</ion-label>
-      <ion-select interface="popover" multiple="false" value="3 John" >
-        <ion-select-option value="bacon">Bacon</ion-select-option>
-        <ion-select-option value="olives">Black Olives</ion-select-option>
-      </ion-select>
-    </ion-item>
+    <ion-list>
+        <ion-list-header>Interface Options</ion-list-header>
+        <ion-item>
+            <ion-label> {{testamentVersion}} Testament</ion-label>
+            <ion-toggle checked={{testamentTrigger}} color="primary" (ionChange)="testamentChange($event)"></ion-toggle>
+        </ion-item>
+        <ion-item>
+            <ion-label>Book</ion-label>
+            <ion-select interface="popover" multiple="false" value={{getBooks()[0].value}}>
+                <ion-select-option *ngFor="let element of getBooks()" value={{element.value}}>{{element.book}}
+                </ion-select-option>
+            </ion-select>
+        </ion-item>
 
 
-    <ion-item>
-      <ion-item>
-        <ion-label>Chapter</ion-label>
-        <ion-select interface="popover" multiple="false" value="1">
-          <ion-select-option value="1">1</ion-select-option>
-        </ion-select>
-      </ion-item>
-      <ion-item>
-        <ion-label>Verse</ion-label>
-        <ion-select interface="popover" multiple="false" value="1">
-          <ion-select-option value="1">1</ion-select-option>
-        </ion-select>
-      </ion-item>
-    </ion-item>
+        <ion-item>
+            <ion-item>
+                <ion-label>Chapter</ion-label>
+                <ion-select interface="popover" multiple="false" value="1">
+                    <ion-select-option value="1">1</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label>Verse</ion-label>
+                <ion-select interface="popover" multiple="false" value="1">
+                    <ion-select-option value="1">1</ion-select-option>
+                </ion-select>
+            </ion-item>
+        </ion-item>
 
 
-  </ion-list>
+    </ion-list>
 
 </ion-content>
