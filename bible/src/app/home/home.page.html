@@ -19,28 +19,27 @@
         </ion-item>
         <ion-item>
             <ion-label>Book</ion-label>
-            <ion-select interface="popover" multiple="false" value="{{bibleBooks[0].value}}">
-                <ion-select-option *ngFor="let element of bibleBooks" value={{element.value}} (ionChange)="bookChange($event)">{{element.book}}
+            <ion-select interface="popover" multiple="false" value="{{bibleBooks[0].value}}"
+                        (ionChange)="bookChange($event)">
+                <ion-select-option *ngFor="let element of bibleBooks" value={{element.value}}>{{element.book}}
                 </ion-select-option>
             </ion-select>
         </ion-item>
 
-        <ion-item>
-            <ion-item>
-                <ion-label>Chapter</ion-label>
-                <ion-select interface="popover" multiple="false" value="1">
-
-                    <ion-select-option *ngFor="let item of [].constructor(10); let i = index " value={{i+1}}>{{i+1}}
-                    </ion-select-option>
-                </ion-select>
-            </ion-item>
-            <ion-item>
-                <ion-label>Verse</ion-label>
-                <ion-select interface="popover" multiple="false" value="1">
-                    <ion-select-option value="1">1</ion-select-option>
-                </ion-select>
-            </ion-item>
-        </ion-item>
+            <!--<ion-item>-->
+                <!--<ion-label>Chapter</ion-label>-->
+                <!--<ion-select interface="popover" multiple="false" value="{{numberOfChapters[0].value}}"-->
+                <!--&gt;-->
+                    <!--<ion-select-option *ngFor="let chapter of numberOfChapters" value={{chapter.value}}>{{chapter.value}}-->
+                    <!--</ion-select-option>-->
+                <!--</ion-select>-->
+            <!--</ion-item>-->
+            <!--<ion-item>-->
+                <!--<ion-label>Verse</ion-label>-->
+                <!--<ion-select interface="popover" multiple="false" value="1">-->
+                    <!--<ion-select-option value="1">1</ion-select-option>-->
+                <!--</ion-select>-->
+            <!--</ion-item>-->
 
 
     </ion-list>

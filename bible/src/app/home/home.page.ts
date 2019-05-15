@@ -13,10 +13,12 @@ export class HomePage {
     private _subject: Subject<any>;
     testamentVersion = 'New';
     bibleBooks = this.bibleService.getNewTestamentBooks();
-    numberOfChapters = this.bibleService.getChapterNumbers();
+    numberOfChapters = [];
+
 
     constructor(private bibleService: BibleService) {
         this._subject = new Subject<any>();
+        // this.numberOfChapters = this.bibleService.lookUpChapters('Matthew', this._testamentTrigger);
         this._subject.subscribe(value => {
                 if (value) {
                     this.bibleBooks = this.bibleService.getNewTestamentBooks();
@@ -35,7 +37,13 @@ export class HomePage {
 
 
     bookChange(bookEvent: any) {
-        console.log(bookEvent);
+        // const bookSelected = bookEvent.detail.value;
+        // this.numberOfChapters = this.bibleService.lookUpChapters(bookSelected, this._testamentTrigger);
+    }
+
+    chapterChangeChange(chapter: any) {
+        // const bookSelected = bookEvent.detail.value;
+        // this.numberOfChapters = this.bibleService.lookUpChapters(bookSelected, this._testamentTrigger);
     }
 
     testamentChange(toggleEvent: any) {
@@ -43,5 +51,6 @@ export class HomePage {
         this._subject.next(value);
         this._testamentTrigger = value;
     }
+
 
 }
