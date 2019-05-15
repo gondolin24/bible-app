@@ -10,16 +10,19 @@ import {BibleService} from '../services/bible.service';
 export class HomePage {
 
     private _testamentTrigger = true;
-    private _subject: Subject<any>;
+    private _testamentSubject: Subject<any>;
     testamentVersion = 'New';
     bibleBooks = this.bibleService.getNewTestamentBooks();
     numberOfChapters = [];
 
+    placeholer = 't';
+
 
     constructor(private bibleService: BibleService) {
-        this._subject = new Subject<any>();
+        this._testamentSubject = new Subject<any>();
         // this.numberOfChapters = this.bibleService.lookUpChapters('Matthew', this._testamentTrigger);
-        this._subject.subscribe(value => {
+        this._testamentSubject.subscribe(value => {
+                this._testamentTrigger = value;
                 if (value) {
                     this.bibleBooks = this.bibleService.getNewTestamentBooks();
                     this.testamentVersion = 'New';
@@ -37,9 +40,12 @@ export class HomePage {
 
 
     bookChange(bookEvent: any) {
+        this.placeholer = bookEvent.detail.value;
+        this.bibleService.lookUpChapters(this.placeholer, this._testamentTrigger);
         // const bookSelected = bookEvent.detail.value;
         // this.numberOfChapters = this.bibleService.lookUpChapters(bookSelected, this._testamentTrigger);
     }
+
 
     chapterChangeChange(chapter: any) {
         // const bookSelected = bookEvent.detail.value;
@@ -48,8 +54,7 @@ export class HomePage {
 
     testamentChange(toggleEvent: any) {
         const value = toggleEvent.detail.checked;
-        this._subject.next(value);
-        this._testamentTrigger = value;
+        this._testamentSubject.next(value);
     }
 
 

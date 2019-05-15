@@ -9,14 +9,19 @@ export class BibleService {
     constructor(private http: HttpClient) {
     }
 
-    private oldTestamentBooks = [{
+    private oldTestamentBooks: BookMetaData[] = [{
         book: '1 Chronicles',
         value: '1Chronicles',
         file: './assets/bible/oldTestament/1Chronicles.json'
-    }];
+    },
+        {
+            book: '2 Chronicles',
+            value: '2Chronicles',
+            file: './assets/bible/oldTestament/2Chronicles.json'
+        }];
 
 
-    private newTestamentBooks = [{
+    private newTestamentBooks: BookMetaData[] = [{
         book: 'Matthew',
         value: 'Matthew',
         file: './assets/bible/newTestament/Matthew.json'
@@ -38,24 +43,24 @@ export class BibleService {
     }
 
 
-    // lookUpChapters(book: string, testament: boolean) {
-    //     const numChapters = [];
-    //     let fileUrl;
-    //     if (testament) {
-    //         fileUrl = Object(this.newTestamentBooks).filter(o => o.book === book)[0].file;
-    //
-    //     } else {
-    //         fileUrl = Object(this.oldTestamentBooks).filter(o => o.book === book)[0].file;
-    //
-    //     }
-    //
-    //     this.http.get(fileUrl).subscribe(o => {
-    //         for (let i = 1; i <= o.chapters.length; i++) {
-    //             numChapters.push({value: i});
-    //         }
-    //     });
-    //
-    //     return numChapters;
-    // }
+    lookUpChapters(book: string, testament: boolean) {
+        const numChapters = [];
+        // let fileUrl;
+        console.log(this.oldTestamentBooks);
+        //
+        // this.http.get(fileUrl).subscribe(o => {
+        //     for (let i = 1; i <= o.chapters.length; i++) {
+        //         numChapters.push({value: i});
+        //     }
+        // });
+        //
+        // return numChapters;
+    }
 
+}
+
+interface BookMetaData {
+    book?: string;
+    value?: string;
+    file?: string;
 }
