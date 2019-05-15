@@ -38,24 +38,24 @@ export class BibleService {
     }
 
 
-    lookUpChapters(book: string, testament: boolean) {
-        const numChapters = [];
-        let fileUrl;
-        if (testament) {
-            fileUrl = Object(this.newTestamentBooks).filter(o => o.book === book)[0].file;
-
-        } else {
-            fileUrl = Object(this.oldTestamentBooks).filter(o => o.book === book)[0].file;
-
-        }
-
-        this.http.get(fileUrl).subscribe(o => {
-            for (let i = 1; i <= o.chapters.length; i++) {
-                numChapters.push({value: i});
-            }
-        });
-
-        return numChapters;
-    }
+    // lookUpChapters(book: string, testament: boolean) {
+    //     const numChapters = [];
+    //     let fileUrl;
+    //     if (testament) {
+    //         fileUrl = Object(this.newTestamentBooks).filter(o => o.book === book)[0].file;
+    //
+    //     } else {
+    //         fileUrl = Object(this.oldTestamentBooks).filter(o => o.book === book)[0].file;
+    //
+    //     }
+    //
+    //     this.http.get(fileUrl).subscribe(o => {
+    //         for (let i = 1; i <= o.chapters.length; i++) {
+    //             numChapters.push({value: i});
+    //         }
+    //     });
+    //
+    //     return numChapters;
+    // }
 
 }
