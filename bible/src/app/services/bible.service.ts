@@ -44,17 +44,15 @@ export class BibleService {
 
 
     lookUpChapters(book: string, testament: boolean) {
-        const numChapters = [];
         // let fileUrl;
-        console.log(this.oldTestamentBooks);
-        //
-        // this.http.get(fileUrl).subscribe(o => {
-        //     for (let i = 1; i <= o.chapters.length; i++) {
-        //         numChapters.push({value: i});
-        //     }
-        // });
-        //
-        // return numChapters;
+        let fileLocation;
+        if (testament) {
+            fileLocation = Object(this.newTestamentBooks).filter(current => current.value === book)[0].file;
+        } else {
+            fileLocation = Object(this.oldTestamentBooks).filter(current => current.value === book)[0].file;
+        }
+
+        return Promise.resolve(this.http.get(fileLocation));
     }
 
 }
@@ -63,4 +61,9 @@ interface BookMetaData {
     book?: string;
     value?: string;
     file?: string;
+}
+
+export interface BibleBook {
+    book?: string;
+    chapters?: [];
 }

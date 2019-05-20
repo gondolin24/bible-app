@@ -26,24 +26,28 @@
             </ion-select>
         </ion-item>
 
-            <!--<ion-item>-->
-                <!--<ion-label>Chapter</ion-label>-->
-                <!--<ion-select interface="popover" multiple="false" value="{{numberOfChapters[0].value}}"-->
-                <!--&gt;-->
-                    <!--<ion-select-option *ngFor="let chapter of numberOfChapters" value={{chapter.value}}>{{chapter.value}}-->
-                    <!--</ion-select-option>-->
-                <!--</ion-select>-->
-            <!--</ion-item>-->
-            <ion-item>
-                <ion-label>Verse</ion-label>
-                <ion-select interface="popover" multiple="false" value="1">
-                    <ion-select-option value="1">1</ion-select-option>
-                    <ion-select-option value="2">2</ion-select-option>
-                </ion-select>
-            </ion-item>
+        <ion-item>
+            <ion-label>Chapter</ion-label>
+            <ion-select interface="popover" multiple="false" value={{random}} (ionChange)="fuck($event)">
+                <ion-select-option value='1'>1</ion-select-option>
+
+                    <ion-select-option *ngFor="let chapter of numberOfChapters" value={{chapter.value}}>
+                        {{chapter.value}}
+                </ion-select-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Verse</ion-label>
+            <ion-select interface="popover" multiple="false" value="1">
+                <ion-select-option value="1">1</ion-select-option>
+                <ion-select-option value="2">2</ion-select-option>
+            </ion-select>
+        </ion-item>
 
 
     </ion-list>
+
 
     <h3> Number of chapters = {{placeholer}}</h3>
 
